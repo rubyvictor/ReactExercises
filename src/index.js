@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import isEmpty from 'lodash';
+import '../src/index.css';
 
 function MyComponent() {
   return (
@@ -41,19 +42,82 @@ function Greeting() {
 }
 
 function Table() {
-  return (
-    <Data />
-  );
+  return <Data />;
 }
 
 function Data() {
   return (
     <Fragment>
-        <td>data 1</td>
-        <td>data 2</td>
-        <td>data 3</td>
+      <td>data 1</td>
+      <td>data 2</td>
+      <td>data 3</td>
     </Fragment>
+  );
+}
+
+function Tweet() {
+  return (
+    <div className="tweet">
+      <Avatar/>
+      <div className="content">
+        <NameWithHandle/><Time/>
+        <Message/>
+        <div className="buttons">
+            <ReplyButton/>
+            <RetweetButton/>
+            <LikeButton/>
+            <MoreOptionsButton/>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Avatar() {
+  return (
+    <img
+      src="https://www.gravatar.com/avatar/nothing"
+      className="avatar"
+      alt="avatar"
+    />
+  );
+}
+
+function Message() {
+  return (
+    <div className="message">
+      This is a tweet going out to you tweetie bird.
+    </div>
   )
 }
 
-ReactDOM.render(<Table />, document.getElementById('root'));
+function NameWithHandle() {
+  return (
+    <span className="name-with-handle">
+      <span className="name">Your Name</span>
+      <span className="handle">Your Handle</span>
+    </span>
+  )
+}
+
+const Time = () => (
+  <span className="time">3 hours ago</span>
+)
+
+const ReplyButton = () => (
+  <i className="fa fa-reply reply-button" />
+)
+
+const RetweetButton = () => (
+  <i className="fa fa-retweet retweet-button"></i>
+)
+
+const LikeButton = () => (
+  <i className="fa fa-heart like-button"></i>
+)
+
+const MoreOptionsButton = () => (
+    <i className="fa fa-ellipsis-h more-options-button"></i>
+)
+
+ReactDOM.render(<Tweet />, document.getElementById('root'));
