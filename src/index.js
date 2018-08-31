@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import isEmpty from 'lodash';
 
 function MyComponent() {
   return (
@@ -30,13 +31,29 @@ function AnotherWayComponent() {
 }
 
 function Greeting() {
-  var username = "Victor";
- // try undefine, null, true, 
+  var username = 'Victor';
+  // try undefine, null, true,
   return (
     <span>
-      {username ? "Hello "+ username : 'Not logged in.'}
+      {username && !username.isEmpty ? 'Hello ' + username : 'Not logged in.'}
     </span>
+  );
+}
+
+function Table() {
+  return (
+    <Data />
+  );
+}
+
+function Data() {
+  return (
+    <Fragment>
+        <td>data 1</td>
+        <td>data 2</td>
+        <td>data 3</td>
+    </Fragment>
   )
 }
 
-ReactDOM.render(<Greeting />, document.getElementById('root'));
+ReactDOM.render(<Table />, document.getElementById('root'));
